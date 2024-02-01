@@ -1,12 +1,9 @@
 <template>
   <v-app>
-    <DefaultBar />
-
-    <DefaultView />
+    <router-view class="px-4 py-4"/>
   </v-app>
 </template>
 
 <script setup>
-  import DefaultBar from './default/AppBar.vue'
-  import DefaultView from './default/View.vue'
+
 </script>
