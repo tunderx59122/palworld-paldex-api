@@ -4,7 +4,7 @@ services:
   paldex:
     container_name: paldex
     build:
-      context: .
+      context: ./src/back
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
