@@ -2,10 +2,28 @@ version: "3.9"
 
 services:
   paldex:
-    container_name: paldex
+    container_name: paldex-api
     build:
       context: ./src/back
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "3000:3000"
+      - "3001:3001"
+    networks:
+      - api
+
+  front:
+    container_name: paldex-front
+    build: src/front
+    restart: unless-stopped
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+    ports:
+      - "3000:80"
+    networks:
+      - api
+
+networks:
+  api:
+    driver: bridge

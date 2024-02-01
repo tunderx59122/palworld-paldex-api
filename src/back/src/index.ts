@@ -13,6 +13,6 @@ const app = new Elysia()
       query: queryIndexPals,
     }
   )
-  .listen(3000);
+  .listen(3001);
 
 console.log(`🦊 Elysia is running at on port ${app.server?.port}...`);
