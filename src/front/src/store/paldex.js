@@ -9,7 +9,7 @@ export const usePaldexStore = defineStore('paldex', () => {
   const paldex = ref([]);
   
   async function Pals() {
-    paldex.value = await requester.get();
+    paldex.value = await requester.get({ limit: -1 });
     loaded.value = true;
   }
 
