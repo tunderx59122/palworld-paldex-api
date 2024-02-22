@@ -1,10 +1,14 @@
-import { staticPlugin } from "@elysiajs/static";
 import { Elysia } from "elysia";
+import { staticPlugin } from "@elysiajs/static";
+import { cors } from '@elysiajs/cors';
 import { queryIndexPals } from "./schemas";
 import { IndexPalsUseCase } from "./useCases";
 
 const app = new Elysia()
   .use(staticPlugin())
+  .use(cors({
+    origin: /.*/
+  }))
   .get(
     "/",
     ({ query: { page, limit, term, ...filter } }) =>
