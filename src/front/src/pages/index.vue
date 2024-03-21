@@ -3,23 +3,23 @@
   <v-container class="pal-global">
     <v-row justify="center">
       <v-col cols="3" class="paldex-side-column">
-        <div class="box-background padding-middle">
-          <h2>Vos pals</h2>
-          <ListPalsMe :pals="palsData"/>
+        <div class="box-background">
+          <h2 class="text-uppercase mx-8 mt-8 mb-4">Vos pals</h2>
+          <ListPalsMe :pals="teamPals" @removePal="(pal) => teamPals.splice(teamPals.indexOf(pal), 1)"/>
         </div>
       </v-col>
 
       <v-col cols="6">
         <div class="box-background padding-middle">
-          <h2>Les pals</h2>
-          <ListPals :pals="palsData" @infoPal="getInfoPal"/>
+          <h2 class="text-uppercase mb-4">Liste des Pals</h2>
+          <ListPals :pals="paldex" @infoPal="(pal) => infoPal = pal" @addPal="(pal) => teamPals.push(pal)"/>
         </div>
       </v-col>
 
       <v-col cols="3" class="paldex-side-column">
         <div class="box-background padding-middle">
-          <h2>Détails du pal</h2>
-          <PalsDetails :pals="infoPal" />
+          <h2 class="text-uppercase mb-4">Détails du pal</h2>
+          <PalsDetails :pals="infoPal" @addPal="(pal) => teamPals.push(pal)"/>
         </div>
       </v-col>
     </v-row>
@@ -28,7 +28,7 @@
 
 
 <script setup>
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref } from 'vue';
 import { usePaldexStore } from '@/store/paldex';
 import ListPals from '@/components/ListPals.vue';
 import ListPalsMe from '@/components/ListPalsMe.vue';
@@ -37,18 +37,12 @@ import PalsDetails from '@/components/PalsDetails.vue';
 const paldexStore = usePaldexStore();
 const paldex = ref([]);
 const infoPal = ref(null)
+const teamPals = ref([])
 
 onMounted(async () => {
   await paldexStore.Pals();
   paldex.value = paldexStore.paldex.content;
 });
-
-function getInfoPal(pal) {
-  console.log(pal)
-  infoPal.value = pal
-}
-
-const palsData = computed(() => paldex.value);
 </script>
 
 
@@ -61,6 +55,8 @@ const palsData = computed(() => paldex.value);
 
   .box-background {
     background-color: #00000080 !important;
+    height: 96.5vh;
+    overflow-y: scroll;
   }
 
   .no-background {

@@ -1,23 +1,24 @@
 <template>
-  <v-sheet
-    class="d-flex align-content-space-around flex-wrap box-middle no-background"
-    min-height="200"
-  >
-    <v-sheet
-      v-for="(pal, index) in pals" :key="index" class="pal-items"
-    >
-      <p>{{ pal.name }}</p>
-    </v-sheet>
-  </v-sheet>
+  <v-row no-gutters class="d-flex flex-row mx-4 pl-2">
+    <v-col cols="12" class="d-flex flex-row px-4 pal-row justify-space-between align-center my-2" v-for="(pal, index) of pals" :key="index">
+      <v-sheet class="pal-sheet">
+        <img class="pal-img" :src="`${backBaseUrl}${pal.image}`" :alt="pal.name">
+      </v-sheet>
+      <p class="text-h5 text-uppercase font-weight-bold">{{ pal.name }}</p>
+      <v-icon class="remove-icon" color="#3a3a3a" size="large" icon="mdi-minus" @click="emits('removePal', pal)"></v-icon>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
-import { defineProps } from 'vue';
+const backBaseUrl = import.meta.env.VITE_BACK_BASE_URL;
 
 const props = defineProps({
   pals: Array
 });
+
+const emits = defineEmits(['removePal']);
 
 onMounted(() => {
   console.log('pals:', props.pals);
@@ -25,23 +26,28 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-  // .box-middle {
-  //   padding: 2rem;
+.pal-row {
+  background-color: rgb(33, 34, 36);
+  border: 0.3rem solid rgb(47, 54, 53);
 
-  //   .pal-items {
-  //     margin: 0.5rem;
-  //     border-radius: 50% !important;
-  //     background-color: rgb(33, 34, 36);
-  //     border: 0.3rem solid rgb(47, 54, 53);
-  //     padding: 0.5rem;
-      
-  //     .pal-img {
-  //       width: 9rem;
-  //       height: 9rem;
-  //       border-radius: 50%;
+  .pal-sheet {
+    width: 100PX;
+    margin: 0.5rem;
+    border-radius: 50% !important;
+    background-color: rgb(33, 34, 36);
+    border: 0.3rem solid rgb(47, 54, 53);
+    padding: 0.5rem;
+  }
 
-  //     }
-  //   }
-  // }
+  .pal-img {
+    width: 100%;
+    border-radius: 50%;
+  }
 
+  .remove-icon {
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 0.5rem;
+  }
+}
 </style>
