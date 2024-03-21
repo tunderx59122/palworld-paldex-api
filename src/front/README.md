@@ -10,7 +10,7 @@ Le projet offre la possibilité de constituer votre équipe de Pals dans le jeu 
 - [VueJS](https://vuejs.org/) - Framework Javascript
 - [Bun](https://bun.sh/docs/installation) - ALl in-one javascript runtime
 
-## Lancement
+## Lancement sans docker
 - Front : (/src/front/src)
     - npm i
     - npm run dev
@@ -19,6 +19,9 @@ Le projet offre la possibilité de constituer votre équipe de Pals dans le jeu 
     - npm i
     - npm run start
     - http://localhost:3001
+
+## Lancement avec docker
+```docker-compose up -d```
 
 ## Auteurs
 - [Gauthier CORION](https://github.com/MrBaguette07)
