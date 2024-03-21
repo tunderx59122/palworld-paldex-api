@@ -6,9 +6,9 @@ Le projet offre la possibilité de constituer votre équipe de Pals dans le jeu 
 2. Ajouts des pals dans l'équipe
 3. Visualisation des détais des Pals
 
-## Téléchargement
-
-- Dépendance : [bun](https://bun.sh/docs/installation)
+## Dépendance
+- [VueJS](https://vuejs.org/) - Framework Javascript
+- [Bun](https://bun.sh/docs/installation) - ALl in-one javascript runtime
 
 ## Lancement
 - Front : (/src/front/src)
