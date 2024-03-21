@@ -1,4 +1,9 @@
 <template>
+  <p v-for="(pal, index) in pals" :key="index">
+    {{ pal }}
+  </p>
+  
+  <!--
   <v-sheet
     class="d-flex align-content-space-around flex-wrap box-middle no-background"
     min-height="200"
@@ -8,7 +13,7 @@
     >
       <p>{{ pal.name }}</p>
     </v-sheet>
-  </v-sheet>
+  </v-sheet>-->
 </template>
 
 <script setup>
@@ -16,7 +21,7 @@ import { onMounted } from 'vue';
 import { defineProps } from 'vue';
 
 const props = defineProps({
-  pals: Array
+  pals: Object
 });
 
 onMounted(() => {

@@ -4,7 +4,7 @@
     min-height="200"
   >
     <v-sheet
-      v-for="(pal, index) in pals" :key="index" class="pal-items"
+      v-for="(pal, index) in pals" :key="index" class="pal-items" @click="getInfoPal(pal)"
     >
       <img class="pal-img" :src="`${backBaseUrl}${pal.image}`" alt="Pal Image">
     </v-sheet>
@@ -13,17 +13,21 @@
 
 <script setup>
 import { onMounted } from 'vue';
-import { defineProps } from 'vue';
-
 const backBaseUrl = import.meta.env.VITE_BACK_BASE_URL;
 
 const props = defineProps({
   pals: Array
 });
 
+const emits = defineEmits('infoPal');
+
 onMounted(() => {
   console.log('pals:', props.pals);
 });
+
+function getInfoPal(pal) {
+  emits('infoPal', pal);
+}
 </script>
 
 <style lang="scss">
@@ -31,11 +35,16 @@ onMounted(() => {
     justify-content: space-between;
     
     .pal-items {
+      cursor: pointer;
       margin: 0.5rem;
       border-radius: 50% !important;
       background-color: rgb(33, 34, 36);
       border: 0.3rem solid rgb(47, 54, 53);
       padding: 0.5rem;
+
+      &:hover {
+        filter: brightness(80%);
+      }
       
       .pal-img {
         width: 9rem;

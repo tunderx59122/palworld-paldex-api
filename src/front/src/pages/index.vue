@@ -5,21 +5,21 @@
       <v-col cols="2" class="paldex-side-column">
         <div class="box-background padding-middle">
           <h2>Vos pals</h2>
-          <ListPalsMe :pals="palsData" />
+          <ListPalsMe :pals="palsData"/>
         </div>
       </v-col>
 
       <v-col cols="8">
         <div class="box-background padding-middle">
           <h2>Les pals</h2>
-          <ListPals :pals="palsData" />
+          <ListPals :pals="palsData" @infoPal="getInfoPal"/>
         </div>
       </v-col>
 
       <v-col cols="2" class="paldex-side-column">
         <div class="box-background padding-middle">
           <h2>Détails du pal</h2>
-          <PalsDetails :pals="palsData" />
+          <PalsDetails :pals="infoPal" />
         </div>
       </v-col>
     </v-row>
@@ -36,11 +36,17 @@ import PalsDetails from '@/components/PalsDetails.vue';
 
 const paldexStore = usePaldexStore();
 const paldex = ref([]);
+const infoPal = ref(null)
 
 onMounted(async () => {
   await paldexStore.Pals();
   paldex.value = paldexStore.paldex.content;
 });
+
+function getInfoPal(pal) {
+  console.log(pal)
+  infoPal.value = pal
+}
 
 const palsData = computed(() => paldex.value);
 </script>
