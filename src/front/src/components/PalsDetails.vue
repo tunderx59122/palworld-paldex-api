@@ -7,9 +7,20 @@
           <span class="text-primary">Taille: </span>{{ props.pals.size }}<br>
           <span class="text-primary">Rareté: </span>{{ props.pals.rarity }}<br>
           <span class="text-primary">Prix: </span>{{ props.pals.price }}G<br>
+          <span class="text-primary">Wiki: </span><a :href="props.pals.wiki" target="_blank">Lien</a><br>
       </v-col>
       <v-col>
         <img :src="backBaseUrl + props.pals.image" width="100%"/>
+      </v-col>
+    </v-row>
+    <v-row no-gutters>
+      <v-col>
+        <span class="text-primary">Types: </span>
+        <ul class="pl-6">
+          <li v-for="types in props.pals.types" :key="types">
+            {{ types }}
+          </li>
+        </ul>
       </v-col>
     </v-row>
     <v-row no-gutters>
@@ -23,6 +34,16 @@
         <ul class="pl-6">
           <li v-for="drop in props.pals.drops" :key="drop">
             {{ drop }}
+          </li>
+        </ul>
+      </v-col>
+    </v-row>
+    <v-row no-gutters>
+      <v-col>
+        <span class="text-primary">Stats travail: </span>
+        <ul class="pl-6">
+          <li v-for="stat in props.pals.suitability" :key="stat">
+            {{ stat.type }} - {{ stat.level }}
           </li>
         </ul>
       </v-col>
@@ -83,32 +104,11 @@
 import { defineProps, ref } from 'vue';
 
 const backBaseUrl = import.meta.env.VITE_BACK_BASE_URL;
-
 const tab = ref(null);
 
 const props = defineProps({
   pals: Object
 });
+
 </script>
 
-<style lang="scss">
-  // .box-middle {
-  //   padding: 2rem;
-
-  //   .pal-items {
-  //     margin: 0.5rem;
-  //     border-radius: 50% !important;
-  //     background-color: rgb(33, 34, 36);
-  //     border: 0.3rem solid rgb(47, 54, 53);
-  //     padding: 0.5rem;
-      
-  //     .pal-img {
-  //       width: 9rem;
-  //       height: 9rem;
-  //       border-radius: 50%;
-
-  //     }
-  //   }
-  // }
-
-</style>
