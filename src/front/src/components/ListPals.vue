@@ -19,7 +19,7 @@ const props = defineProps({
   pals: Array
 });
 
-const emits = defineEmits('infoPal');
+const emits = defineEmits(['infoPal']);
 
 onMounted(() => {
   console.log('pals:', props.pals);

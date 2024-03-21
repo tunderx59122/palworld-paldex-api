@@ -2,21 +2,21 @@
 <template>
   <v-container class="pal-global">
     <v-row justify="center">
-      <v-col cols="2" class="paldex-side-column">
+      <v-col cols="3" class="paldex-side-column">
         <div class="box-background padding-middle">
           <h2>Vos pals</h2>
           <ListPalsMe :pals="palsData"/>
         </div>
       </v-col>
 
-      <v-col cols="8">
+      <v-col cols="6">
         <div class="box-background padding-middle">
           <h2>Les pals</h2>
           <ListPals :pals="palsData" @infoPal="getInfoPal"/>
         </div>
       </v-col>
 
-      <v-col cols="2" class="paldex-side-column">
+      <v-col cols="3" class="paldex-side-column">
         <div class="box-background padding-middle">
           <h2>Détails du pal</h2>
           <PalsDetails :pals="infoPal" />
