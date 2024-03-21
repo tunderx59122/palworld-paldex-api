@@ -25,7 +25,7 @@
     </v-row>
     <v-row no-gutters>
       <v-col>
-        <span class="text-primary">Description: </span>{{ props.pals.description }}G<br>
+        <span class="text-primary">Description: </span>{{ props.pals.description }}<br>
       </v-col>
     </v-row>
     <v-row no-gutters>
