@@ -8,3 +8,13 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 10px;
+}
