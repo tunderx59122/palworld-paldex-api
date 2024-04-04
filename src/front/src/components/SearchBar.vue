@@ -1,7 +1,7 @@
 <!-- SearchBar.vue -->
 <template>
     <div>
-      <input type="text" v-model="searchQuery" @change="$emit('filteredPals', searchQuery)" placeholder="Search...">
+      <input type="text" v-model="searchQuery" @input="$emit('filteredPals', searchQuery)" placeholder="Search...">
     </div>
   </template>
   
@@ -19,6 +19,14 @@
   </script>
   
   <style scoped>
-  /* Add your CSS styles here */
+    input{
+        margin: 0% 10% 5% 10%;
+        height: 50px;
+        width: 80%;
+        font-size: xx-large;
+        background-color: white;
+        color: black;
+    }
+
   </style>
   
