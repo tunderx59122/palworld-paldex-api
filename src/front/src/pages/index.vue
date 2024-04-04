@@ -12,14 +12,14 @@
       <v-col cols="6">
         <div class="box-background padding-middle">
           <h2 class="text-uppercase mb-4">Liste des Pals</h2>
-          <ListPals :pals="paldex" @infoPal="(pal) => infoPal = pal" @addPal="(pal) => teamPals.push(pal)"/>
+          <ListPals :pals="paldex" @infoPal="(pal) => infoPal = pal" @addPal="(pal) => addPal(pal)"/>
         </div>
       </v-col>
 
       <v-col cols="3" class="paldex-side-column">
         <div class="box-background padding-middle">
           <h2 class="text-uppercase mb-4">Détails du pal</h2>
-          <PalsDetails :pals="infoPal" @addPal="(pal) => teamPals.push(pal)"/>
+          <PalsDetails :pals="infoPal" @addPal="(pal) => addPal(pal)"/>
         </div>
       </v-col>
     </v-row>
@@ -43,6 +43,11 @@ onMounted(async () => {
   await paldexStore.Pals();
   paldex.value = paldexStore.paldex.content;
 });
+
+const addPal = (pal) => {
+  if (teamPals.value.length == 5) return;
+  teamPals.value.push(pal);
+}
 </script>
 
 
