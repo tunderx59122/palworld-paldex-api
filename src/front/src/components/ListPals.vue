@@ -4,10 +4,11 @@
     class="d-flex align-content-space-around flex-wrap box-middle no-background"
     min-height="200"
   >
-
+  <p v-if="filteredPalsList.length == 0" >No Pal found !</p>
     <v-sheet
       v-for="(pal, index) in filteredPalsList" :key="index" class="pal-items"
     >
+    
       <v-icon class="add-icon" color="#3a3a3a" size="large" icon="mdi-plus" @click="emits('addPal', pal)"></v-icon>
       <img class="pal-img" :src="`${backBaseUrl}${pal.image}`" alt="Pal Image" @click="emits('infoPal', pal)">
     </v-sheet>
@@ -75,6 +76,10 @@ const filteredPalsList = computed(() => {
         }
       }
     }
+  }
+
+  p{
+    font-size: xx-large;
   }
 
 </style>
